@@ -54,3 +54,19 @@ python Test.py
 - `Test.py` as written has bugs: it uses `frames_dir` and `frame_count` without defining them (a `NameError` on the first frame), reads `./a.mp4` while the included file is `e.mp4`, and writes `output_videoA.mp4`. Define the frame output folder and counter, or remove the frame-saving lines, before running.
 - `Test.py` calls `PaddleOCR(use_gpu=...)`, which is an older PaddleOCR argument; newer versions may need a different device option.
 - OCR is applied to every detected box in every frame, which is slow on CPU.
+
+## Pretrained YOLO weights (not included)
+
+The following off-the-shelf Ultralytics checkpoints were removed from this repository because they are publicly downloadable. The code loads them by name, and Ultralytics downloads them automatically on first use:
+
+- `yolo11n.pt`
+- `yolov8m.pt`
+- `yolov8n.pt`
+- `yolov8s.pt`
+
+```python
+from ultralytics import YOLO
+model = YOLO("yolov8n.pt")  # downloaded automatically if not present
+```
+
+Or download them manually from https://github.com/ultralytics/assets/releases
